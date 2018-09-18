@@ -10,9 +10,11 @@
   grid-template-areas: 
     "title title title title title"
     "tab1 tab2 tab3 tab4 ."
-    "image image image text category-image"
-    "image image image text category-text"
-    "image image image audio category-audio";
+    "image image image image category-image"
+    "image image image image category-text"
+    "image image image image category-audio"
+    "audio audio audio audio ."
+    "text text text text .";
 }
 
 #container > * {
