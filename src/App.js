@@ -51,43 +51,37 @@ class Poem extends Component {
       this.index = props.index;
     }
     this.state = {
-      error: null,
       isLoaded: false,
-      data: null,
+      data: null
     };
   }
 
   componentDidMount() {
-    axios.get(`./text/${this.type}${this.index}.json`)
-      .then((response) => {
+    cachios.get(`http://localhost:3000/text/${this.type}${this.index}.json`)
+      .then(response => {
         this.setState({
           isLoaded: true,
           data: response.data
-        }),
-        (error) => {
-          this.setState({
-            error
-          })
-        }
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
       });
   }
 
   render() {
-    const { error, isLoaded, data } = this.state;
-    if (error) {
-      return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
+    const { isLoaded, data } = this.state;
+    if (!isLoaded) {
       return <div>Loading...</div>;
     } else {
       console.log(data);
       return (
         <div>
-          <p>got stuff</p>
-          {/* <h2>{data.title}</h2>
+          <h2>{data.title}</h2>
           <p>{data.author}</p>
           {data.poem.map(line => (
             <p>{line}</p>
-          ))} */}
+          ))}
         </div>
       );
     }
