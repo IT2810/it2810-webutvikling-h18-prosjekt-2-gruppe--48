@@ -1,5 +1,21 @@
 import React, { Component } from 'react';
 import './App.css';
+import animals0 from "./text/animals1.json";
+
+const axios = require("axios");
+const cachios = require("cachios");
+
+const resources = {
+  "text": [null, null, null, null, null],
+  "images": [null, null, null, null, null],
+  "audio": [null, null, null, null, null]
+}
+
+function getPoem(type, index) {
+  return cachios.get(`./text/${type}${index}.json`).then(resp => {
+    return JSON.parse(resp);
+  })
+}
 
 class App extends Component {
   render() {
@@ -12,7 +28,7 @@ class App extends Component {
           <div id="tab3">Tab component 3</div>
           <div id="tab4">Tab component 4</div>
           <div id="image">Image component goes here</div>
-          <div id="text">Text component goes here</div>
+          <div id="text"><Poem type="city" index="1" /></div>
           <div id="audio">Audio component goes here</div>
           <div id="category-image">Category image component goes here</div>
           <div id="category-audio">Category audio component goes here</div>
@@ -20,6 +36,61 @@ class App extends Component {
         </div>
       </div>
     );
+  }
+}
+
+class Poem extends Component {
+  constructor(props) {
+    super(props);
+    this.type = "nature";
+    if (props.type) {
+      this.type = props.type;
+    }
+    this.index = "1";
+    if (props.index) {
+      this.index = props.index;
+    }
+    this.state = {
+      error: null,
+      isLoaded: false,
+      data: null,
+    };
+  }
+
+  componentDidMount() {
+    axios.get(`./text/${this.type}${this.index}.json`)
+      .then((response) => {
+        this.setState({
+          isLoaded: true,
+          data: response.data
+        }),
+        (error) => {
+          this.setState({
+            error
+          })
+        }
+      });
+  }
+
+  render() {
+    const { error, isLoaded, data } = this.state;
+    if (error) {
+      return <div>Error: {error.message}</div>;
+    } else if (!isLoaded) {
+      return <div>Loading...</div>;
+    } else {
+      console.log(data);
+      return (
+        <div>
+          <p>got stuff</p>
+          {/* <h2>{data.title}</h2>
+          <p>{data.author}</p>
+          {data.poem.map(line => (
+            <p>{line}</p>
+          ))} */}
+        </div>
+      );
+    }
   }
 }
 
