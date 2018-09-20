@@ -1,21 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import animals0 from "./text/animals1.json";
 
-const axios = require("axios");
 const cachios = require("cachios");
-
-const resources = {
-  "text": [null, null, null, null, null],
-  "images": [null, null, null, null, null],
-  "audio": [null, null, null, null, null]
-}
-
-function getPoem(type, index) {
-  return cachios.get(`./text/${type}${index}.json`).then(resp => {
-    return JSON.parse(resp);
-  })
-}
 
 class App extends Component {
   render() {
@@ -57,11 +43,11 @@ class Poem extends Component {
   }
 
   componentDidMount() {
-    cachios.get(`http://localhost:3000/text/${this.type}${this.index}.json`)
+    cachios.get(`text/${this.type}${this.index}.json`)
       .then(response => {
         this.setState({
           isLoaded: true,
-          data: response.data
+          data: response.data[0]
         });
       })
       .catch(function (error) {
@@ -76,11 +62,11 @@ class Poem extends Component {
     } else {
       console.log(data);
       return (
-        <div>
-          <h2>{data.title}</h2>
-          <p>{data.author}</p>
-          {data.poem.map(line => (
-            <p>{line}</p>
+        <div id="poem">
+          <h2>{data["title"]}</h2>
+          <p>{data["author"]}</p>
+          {data["poem"].map((line, i) => (
+            <p key={i}>{line}</p>
           ))}
         </div>
       );
