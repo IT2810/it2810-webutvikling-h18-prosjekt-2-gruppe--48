@@ -1,0 +1,25 @@
+<svg width="580" height="400" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+ <g>
+  <title>Flowerhead</title>
+  <rect fill="#fff" id="canvas_background" height="402" width="582" y="-1" x="-1"/>
+  <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+   <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <ellipse id="svg_18" cy="74.4375" cx="476.5" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="#000" fill="none"/>
+  <ellipse id="svg_19" cy="105.4375" cx="515.5" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="#000" fill="none"/>
+  <ellipse id="svg_20" cy="239.4375" cx="532.5" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="#000" fill="none"/>
+  <ellipse stroke="#ffaad4" ry="53" rx="22.5" id="svg_58" cy="132.4375" cx="292" stroke-opacity="null" stroke-width="1.5" fill="#ffffff"/>
+  <ellipse stroke="#ffaad4" ry="53" rx="22.5" id="svg_60" cy="251.4375" cx="294" stroke-opacity="null" stroke-width="1.5" fill="#ffffff"/>
+  <ellipse transform="rotate(90 235,196.43750000000003) " stroke="#ffaad4" ry="53" rx="22.5" id="svg_61" cy="196.4375" cx="235" stroke-opacity="null" stroke-width="1.5" fill="#ffffff"/>
+  <ellipse transform="rotate(90 351.00000000000006,195.43750000000003) " stroke="#ffaad4" ry="53" rx="22.5" id="svg_63" cy="195.4375" cx="351" stroke-opacity="null" stroke-width="1.5" fill="#ffffff"/>
+  <ellipse transform="rotate(45 337.00000000000006,155.43749999999997) " stroke="#ffaad4" ry="53" rx="22.5" id="svg_64" cy="155.4375" cx="337" stroke-opacity="null" stroke-width="1.5" fill="#ffffff"/>
+  <ellipse transform="rotate(45 248.00000000000006,240.43749999999994) " stroke="#ffaad4" ry="53" rx="22.5" id="svg_65" cy="240.4375" cx="248" stroke-opacity="null" stroke-width="1.5" fill="#ffffff"/>
+  <ellipse transform="rotate(135 335,238.43750000000003) " stroke="#ffaad4" ry="53" rx="22.5" id="svg_66" cy="238.4375" cx="335" stroke-opacity="null" stroke-width="1.5" fill="#ffffff"/>
+  <ellipse transform="rotate(135 245.00000000000003,148.4375) " stroke="#ffaad4" ry="53" rx="22.5" id="svg_68" cy="148.4375" cx="245" stroke-opacity="null" stroke-width="1.5" fill="#ffffff"/>
+  <ellipse ry="28" rx="30" id="svg_57" cy="193.4375" cx="292.5" stroke-opacity="null" stroke-width="1.5" stroke="#ffaad4" fill="#ffff56"/>
+ </g>
+</svg>
