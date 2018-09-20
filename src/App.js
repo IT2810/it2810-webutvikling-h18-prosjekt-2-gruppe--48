@@ -1,16 +1,30 @@
 import React, { Component } from 'react';
+import Tabs from './Tabs.js';
 import './App.css';
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {active: 'Tab1'};
+  }
   render() {
+    const content = {
+      tab1: 'Tab 1',
+      tab2: 'Tab 2',
+      tab3: 'Tab 3',
+      tab4: 'Tab 4'
+    };
     return (
       <div className="App">
         <div id="container">
           <div id="title">Title Here</div>
-          <div id="tab1">Tab component 1</div>
-          <div id="tab2">Tab component 2</div>
-          <div id="tab3">Tab component 3</div>
-          <div id="tab4">Tab component 4</div>
+          <Tabs active={this.state.active} onChange={active=>this.setState({active})}>
+            <div id="tab1" key="tab1">Tab component 1</div>
+            <div id="tab2" key="tab2">Tab component 2</div>
+            <div id="tab3" key="tab3">Tab component 3</div>
+            <div id="tab4" key="tab4">Tab component 4</div>
+          </Tabs>
+          <p>{content[this.state.active]}</p>
           <div id="image">Image component goes here</div>
           <div id="text">Text component goes here</div>
           <div id="audio">Audio component goes here</div>
