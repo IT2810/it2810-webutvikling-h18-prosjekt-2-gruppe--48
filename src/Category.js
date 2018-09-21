@@ -43,8 +43,12 @@ export default class CategoryBox extends Component {
         var callback = this.onChange;
         var catName = this.props.boxName;
         
+        var def = 0;
+        
         var cList = categories.map(function(cat){
-            return <RadioBox checkName={cat} onChange={callback} key={cat} category={catName}/>;
+            def++;
+            
+            return <RadioBox checkName={cat} onChange={callback} key={cat} category={catName} default={def}/>;
         });
         
         return cList;
@@ -78,6 +82,10 @@ class RadioBox extends Component {
         };
         
         this.handleCheck = this.handleCheck.bind(this);
+            
+        if (this.props.default == 1) {
+           this.props.onChange(this.props.checkName, !this.state.checked); 
+        }
     }
     
     handleCheck() {
@@ -87,11 +95,19 @@ class RadioBox extends Component {
     }
     
     render() {
-        return (
-            
-            <div className="Category-Checkbox">
-                <input type="radio" name={this.props.category} onChange={this.handleCheck} defaultChecked={this.state.checked} value={this.props.checkName}/>{this.props.checkName}
-            </div>
-        );
+        
+        if (this.props.default == 1) {
+            return (
+                <div className="Category-Checkbox">
+                    <input type="radio" name={this.props.category} onChange={this.handleCheck} defaultChecked={this.state.checked} value={this.props.checkName} defaultChecked/>{this.props.checkName}
+                </div>
+            );
+        } else {
+            return (
+                <div className="Category-Checkbox">
+                    <input type="radio" name={this.props.category} onChange={this.handleCheck} defaultChecked={this.state.checked} value={this.props.checkName}/>{this.props.checkName}
+                </div>
+            );
+        }
     }
 }
