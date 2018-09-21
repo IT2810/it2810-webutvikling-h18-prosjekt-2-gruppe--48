@@ -1,6 +1,9 @@
 .App {
   text-align: center;
   height: 100%;
+  /*Patter gotten from https://www.toptal.com/designers/subtlepatterns/swirl-2/ under CC licence*/
+  background-image: url("./swirl_pattern.png");
+  background-repeat: repeat;
 }
 
 #container {
@@ -44,11 +47,19 @@
 
 
 #container > * {
-  border: 1px solid black;
+  margin: 4px;
+  /*border: 1px solid black;*/
+  border-radius: 2px;
+  box-shadow: 2px 2px 4px gray;
+  background: white;
 }
 
 #title {
   grid-area: title;
+}
+
+.tab {
+  display: inline;
 }
 
 #tab1 {
@@ -72,8 +83,15 @@
   grid-area: image;
 }
 
+svg {
+  background-size: contain;
+}
+
 #text {
   grid-area: text;
+  font-family: serif;
+  color: white;
+  background: black;
 }
 
 
