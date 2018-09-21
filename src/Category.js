@@ -44,7 +44,7 @@ export default class CategoryBox extends Component {
         var catName = this.props.boxName;
         
         var cList = categories.map(function(cat){
-            return <RadioBox checkName={cat} onChange={callback} category={catName}/>;
+            return <RadioBox checkName={cat} onChange={callback} key={cat} category={catName}/>;
         });
         
         return cList;

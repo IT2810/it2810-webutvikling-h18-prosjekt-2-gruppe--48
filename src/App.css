@@ -33,10 +33,7 @@
 }
 
 .tab {
-  background: gray;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  height: 10vh;
+  display: inline;
 }
 
 #tab1 {
