@@ -36,6 +36,10 @@ Our use case for AJAX was rather simple, just download some files that are going
 
 As stated above we used css-grid since it makes it easy to rearrange elements on the page. We used this in combination with media-queries to support multiple device sizes (phone, tablet and computer). We have not done anything special for landscape since we found that it functioned well with the media-queries we already had in place.
 
+## Testing
+
+We tested the page with 3 device formats. Laptop, tablet and phone. We also tested for orientation on tablet and phone. It functions fine for these devices with respect to expected resolution sizes, however for very small phone resolutions the image might be slightly of-screen. (this is because the svg itself is defined with a view size). For larger that normal resolutions there were no problems.
+
 ## Resources and licence
 
 Audio is from [soundbible.com](https://soundbible.com) under CC licence.
