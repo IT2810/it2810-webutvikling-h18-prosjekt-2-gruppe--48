@@ -5,7 +5,7 @@ import './App.css';
 class App extends Component {
   constructor(props){
     super(props);
-    this.state = {active: 'Tab1'};
+    this.state = {active: 'tab1'};
   }
   render() {
     const content = {
@@ -24,8 +24,7 @@ class App extends Component {
             <div id="tab3" key="tab3">Tab component 3</div>
             <div id="tab4" key="tab4">Tab component 4</div>
           </Tabs>
-          <p>{content[this.state.active]}</p>
-          <div id="image">Image component goes here</div>
+          <div id="image">{content[this.state.active]}</div>
           <div id="text">Text component goes here</div>
           <div id="audio">Audio component goes here</div>
           <div id="category-image">Category image component goes here</div>
