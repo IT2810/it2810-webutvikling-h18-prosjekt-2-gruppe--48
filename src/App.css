@@ -1,12 +1,15 @@
 .App {
   text-align: center;
   height: 100%;
+  /*Pattern g*/
+  background-image: url("./swirl_pattern.png");
+  background-repeat: repeat;
 }
 
 #container {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: repeat(5, auto);
+  grid-template-rows: repeat(5, auto);
   grid-template-areas: 
     "title title title title title"
     "tab1 tab2 tab3 tab4 ."
@@ -18,11 +21,22 @@
 }
 
 #container > * {
-  border: 1px solid black;
+  margin: 4px;
+  /*border: 1px solid black;*/
+  border-radius: 2px;
+  box-shadow: 2px 2px 4px gray;
+  background: white;
 }
 
 #title {
   grid-area: title;
+}
+
+.tab {
+  background: gray;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  height: 10vh;
 }
 
 #tab1 {
@@ -45,8 +59,15 @@
   grid-area: image;
 }
 
+svg {
+  background-size: contain;
+}
+
 #text {
   grid-area: text;
+  font-family: serif;
+  color: white;
+  background: black;
 }
 
 #audio {
