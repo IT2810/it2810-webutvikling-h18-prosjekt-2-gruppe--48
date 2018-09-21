@@ -4,6 +4,7 @@ import CategoryBox from './Category.js'
 
 const cachios = require("cachios");
 
+// this is used to call update methods on components
 var updateMap = {};
 var categories = ["animals", "city", "nature"];
 var currentCategory = { "text": "animals", 
@@ -18,6 +19,7 @@ class App extends Component {
     this.callback = this.callback.bind(this);
   }
   render() {
+    // this is where the main grid layout is defined
     return (
       <div className="App">
         <div id="container">
@@ -41,6 +43,7 @@ class App extends Component {
       </div>
     );
   }
+  // callback for the checkbox components to resolve and update what button was clicked
   callback(categories, boxName) {
     for (var [key, value] of categories.entries()) {
       if (value) {
@@ -56,6 +59,7 @@ class App extends Component {
   }
 }
 
+// Method fetches file via AJAX and stores in cache implicitly 
 function getResource(component) {
   cachios.get(`${component.prefix}/${currentCategory[component.prefix]}${currentIndex}${component.suffix}`)
     .then(response => {
@@ -69,6 +73,7 @@ function getResource(component) {
     });
 };
 
+// Base AJAX component to shade some behaviors
 class AJAXComponent extends Component {
   constructor(props) {
     super(props);
@@ -85,6 +90,7 @@ class AJAXComponent extends Component {
   }
 }
 
+// component that will render SVG image
 class SVGComponent extends AJAXComponent {
   constructor(props) {
     super(props);
@@ -106,6 +112,7 @@ class SVGComponent extends AJAXComponent {
   }
 }
 
+// Component that takes in data and renders the poem
 class PoemComponent extends AJAXComponent {
   constructor(props) {
     super(props);
@@ -132,6 +139,7 @@ class PoemComponent extends AJAXComponent {
   }
 }
 
+// component that loads in mp3 file and displays a HTML5 audio component
 class AudioComponent extends Component {
   constructor(props) {
     super(props);
@@ -153,6 +161,7 @@ class AudioComponent extends Component {
   }
 }
 
+// Tab component containing 4 tabs and onclick method for them.
 class Tabs extends Component {
   render() {
     return (
