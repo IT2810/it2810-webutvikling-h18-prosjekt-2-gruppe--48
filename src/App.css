@@ -12,7 +12,7 @@
   grid-template-rows: repeat(5, auto);
   grid-template-areas: 
     "title title title title title"
-    "tab1 tab2 tab3 tab4 ."
+    "tab tab tab tab ."
     "image image image image category-image"
     "image image image image category-text"
     "image image image image category-audio"
@@ -30,26 +30,17 @@
 
 #title {
   grid-area: title;
+  background: black;
+  color: white;
+  font-size: 4em;
 }
 
-.tab {
-  display: inline;
+.Tabs {
+  grid-area: tab;
 }
 
-#tab1 {
-  grid-area: tab1;
-}
-
-#tab2 {
-  grid-area: tab2;
-}
-
-#tab3 {
-  grid-area: tab3;
-}
-
-#tab4 {
-  grid-area: tab4;
+.Category-Checkbox {
+  align: left;
 }
 
 #image {
