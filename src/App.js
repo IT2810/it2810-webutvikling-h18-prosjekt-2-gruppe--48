@@ -13,9 +13,9 @@ class App extends Component {
           <div id="tab2">Tab component 2</div>
           <div id="tab3">Tab component 3</div>
           <div id="tab4">Tab component 4</div>
-          <div id="image">Image component goes here</div>
-          <div id="text"><Poem type="city" index="1" /></div>
-          <div id="audio">Audio component goes here</div>
+          <div id="image"><SVGimage/></div>
+          <div id="text"><Poem/></div>
+          <div id="audio"><AudioComponent/></div>
           <div id="category-image">Category image component goes here</div>
           <div id="category-audio">Category audio component goes here</div>
           <div id="category-text">Category text component goes here</div>
@@ -25,9 +25,25 @@ class App extends Component {
   }
 }
 
-class Poem extends Component {
+function getResource(component) {
+  cachios.get(`${component.prefix}${component.type}${component.index}${component.suffix}`)
+    .then(response => {
+      console.log(response);
+      component.setState({
+        isLoaded: true,
+        data: response.data
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
+
+class AJAXComponent extends Component {
   constructor(props) {
     super(props);
+    this.prefix = "";
+    this.suffix = "";
     this.type = "nature";
     if (props.type) {
       this.type = props.type;
@@ -43,16 +59,15 @@ class Poem extends Component {
   }
 
   componentDidMount() {
-    cachios.get(`text/${this.type}${this.index}.json`)
-      .then(response => {
-        this.setState({
-          isLoaded: true,
-          data: response.data[0]
-        });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    getResource(this);
+  }
+}
+
+class SVGimage extends AJAXComponent {
+  constructor(props) {
+    super(props);
+    this.prefix = "images/";
+    this.suffix = ".svg";
   }
 
   render() {
@@ -60,12 +75,52 @@ class Poem extends Component {
     if (!isLoaded) {
       return <div>Loading...</div>;
     } else {
-      console.log(data);
+      return (
+        <div dangerouslySetInnerHTML={{__html: data}}>
+        </div>
+      );
+    }
+  }
+}
+
+class AudioComponent extends AJAXComponent {
+  constructor(props) {
+    super(props);
+    this.prefix = "audio/";
+    this.suffix = ".mp3";
+  }
+
+  render() {
+    const { isLoaded, data } = this.state;
+    if (!isLoaded) {
+      return <div>Loading...</div>;
+    } else {
+      return (
+        <audio controls loop src={data}>
+          Audio player not supported.
+        </audio>
+      );
+    }
+  }
+}
+
+class Poem extends AJAXComponent {
+  constructor(props) {
+    super(props);
+    this.prefix = "text/";
+    this.suffix = ".json";
+  }
+
+  render() {
+    const { isLoaded, data } = this.state;
+    if (!isLoaded) {
+      return <div>Loading...</div>;
+    } else {
       return (
         <div id="poem">
-          <h2>{data["title"]}</h2>
-          <p>{data["author"]}</p>
-          {data["poem"].map((line, i) => (
+          <h2>{data[0]["title"]}</h2>
+          <p>{data[0]["author"]}</p>
+          {data[0]["poem"].map((line, i) => (
             <p key={i}>{line}</p>
           ))}
         </div>
