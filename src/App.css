@@ -1,7 +1,7 @@
 .App {
   text-align: center;
   height: 100%;
-  /*Pattern g*/
+  /*Patter gotten from https://www.toptal.com/designers/subtlepatterns/swirl-2/ under CC licence*/
   background-image: url("./swirl_pattern.png");
   background-repeat: repeat;
 }
