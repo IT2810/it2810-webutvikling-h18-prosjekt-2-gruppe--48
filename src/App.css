@@ -17,6 +17,13 @@
 
 }
 
+@media (min-width: 650px) {
+  #text{
+      overflow-y: scroll;
+      height: 80vh;
+  }
+}
+
 @media (max-width: 600px){
   #container {
     background: #ddf;
@@ -29,8 +36,12 @@
       "audio audio audio audio"
       "text text text text"
       
-  }  
+  }
+  #text{
+    height:100%;
+  }
 }
+
 
 #container > * {
   border: 1px solid black;
@@ -64,6 +75,7 @@
 #text {
   grid-area: text;
 }
+
 
 #audio {
   grid-area: audio;
