@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Tabs from './Tabs.js';
 import './App.css';
 import CategoryBox from './Category.js'
 
@@ -6,15 +7,30 @@ const cachios = require("cachios");
 var categories = ["Dyr", "By", "Natur"];  
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {active: 'tab1'};
+  }
   render() {
+    const content = {
+      tab1: 'Tab 1',
+      tab2: 'Tab 2',
+      tab3: 'Tab 3',
+      tab4: 'Tab 4'
+    };
     return (
       <div className="App">
         <div id="container">
           <div id="title">The amazing content site</div>
-          <div class="tab" id="tab1">Tab component 1</div>
-          <div class="tab" id="tab2">Tab component 2</div>
-          <div class="tab" id="tab3">Tab component 3</div>
-          <div class="tab" id="tab4">Tab component 4</div>
+          <Tabs active={this.state.active} onChange={active=>this.setState({active})}>
+            <div id="tab1" class="tab" key="tab1">Tab component 1</div>
+            <div id="tab2" class="tab" key="tab2">Tab component 2</div>
+            <div id="tab3" class="tab" key="tab3">Tab component 3</div>
+            <div id="tab4" class="tab" key="tab4">Tab component 4</div>
+          </Tabs>
+          <div id="image">{content[this.state.active]}</div>
+          <div id="text">Text component goes here</div>
+          <div id="audio">Audio component goes here</div>
           <div id="image"><SVGimage index="2"/></div>
           <div id="text"><Poem/></div>
           <div id="audio"><AudioComponent/></div>
