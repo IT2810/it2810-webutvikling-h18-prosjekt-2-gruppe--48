@@ -26,6 +26,10 @@ export default class CategoryBox extends Component {
     
     onChange(catName, value) {
         
+        for (var [key] of this.catMap.entries()) {
+            this.catMap.set(key, false);
+        }
+        
         this.catMap.set(catName, value);
         
         if (this.props.callback != null) {
@@ -37,9 +41,10 @@ export default class CategoryBox extends Component {
         var categories = this.props.categoryNames;
         
         var callback = this.onChange;
+        var catName = this.props.boxName;
         
         var cList = categories.map(function(cat){
-            return <CheckBox checkName={cat} onChange={callback}/>;
+            return <RadioBox checkName={cat} onChange={callback} category={catName}/>;
         });
         
         return cList;
@@ -62,9 +67,9 @@ export default class CategoryBox extends Component {
 }
 
 /*
-    A singular checkbox.
+    A singular Radiobox.
 */
-class CheckBox extends Component {
+class RadioBox extends Component {
     constructor(props) {
         super(props)
         
@@ -85,7 +90,7 @@ class CheckBox extends Component {
         return (
             
             <div className="Category-Checkbox">
-                <input type="checkbox" onChange={this.handleCheck} defaultChecked={this.state.checked}/>{this.props.checkName}
+                <input type="radio" name={this.props.category} onChange={this.handleCheck} defaultChecked={this.state.checked} value={this.props.checkName}/>{this.props.checkName}
             </div>
         );
     }
