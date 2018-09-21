@@ -6,15 +6,30 @@
 #container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-rows: repeat(6, minmax(auto, 20vh));
   grid-template-areas: 
     "title title title title title"
     "tab1 tab2 tab3 tab4 ."
-    "image image image image category-image"
-    "image image image image category-text"
-    "image image image image category-audio"
-    "audio audio audio audio ."
-    "text text text text .";
+    "image image text text category-image"
+    "image image text text category-text"
+    "image image text text category-audio"
+    "audio audio text text ."
+
+}
+
+@media (max-width: 600px){
+  #container {
+    background: #ddf;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+      "title title title title"
+      "category-image category-text category-audio ."
+      "tab1 tab2 tab3 tab4"
+      "image image image image"
+      "audio audio audio audio"
+      "text text text text"
+      
+  }  
 }
 
 #container > * {
@@ -42,6 +57,7 @@
 }
 
 #image {
+  max-height: 60vh;
   grid-area: image;
 }
 
