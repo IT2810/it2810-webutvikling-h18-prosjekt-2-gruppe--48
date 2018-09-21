@@ -58,7 +58,7 @@ export default class CategoryBox extends Component {
         return (
             <div>
                 <div className="Category-Title">
-                    {this.props.boxName}
+                    {this.props.boxName.charAt(0).toUpperCase()+this.props.boxName.slice(1)}
                 </div>
                 <div className="Category-Checkboxes">
                     {this.renderOptions()}

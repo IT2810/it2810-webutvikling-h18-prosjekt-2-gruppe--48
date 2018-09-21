@@ -8,25 +8,32 @@
 
 #container {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(6, minmax(auto, 20vh));
+  grid-template-columns: repeat(5, auto);
+  grid-template-rows: repeat(6, auto);
   grid-template-areas:
+    "title title title title title"
+    "tab tab tab tab ."
+    "image image text text category-image"
+    "image image text text category-text"
+    "image image text text category-audio"
+    "audio audio text text .";
+}
+
+@media (min-width:600px) and (max-width: 1280px) {
+    #container{
+        grid-template-columns: repeat(7, auto);
+        grid-template-areas:
+      "title title title title title"
     "tab tab tab tab ."
     "image image image image category-image"
     "image image image image category-text"
     "image image image image category-audio"
     "audio audio audio audio ."
     "text text text text .";
-
-
-}
-
-@media (min-width: 600px) {
-  #text{
-      overflow-y: scroll;
-      height: 80vh;
-  }
-
+    }
+    #text {
+        height: auto;
+    }
 }
 
 @media (max-width: 600px){
@@ -36,7 +43,7 @@
     grid-template-areas:
       "title title title title"
       "category-image category-text category-audio ."
-      "tab1 tab2 tab3 tab4"
+      "tab tab tab tab"
       "image image image image"
       "audio audio audio audio"
       "text text text text"
@@ -44,6 +51,10 @@
   }
   #text{
     height:100%;
+  }
+  #image{
+      width:100vw;
+
   }
 }
 
@@ -67,17 +78,37 @@
   grid-area: tab;
 }
 
+.Tabs__Tab {
+    background: black;
+    color: white;
+    height:100%;
+}
+
+#selected {
+    background: white;
+    color: black;
+}
+
 .Category-Checkbox {
   align: left;
 }
 
 #image {
-  max-height: 60vh;
+  width: 100%;
+  background-size:cover;
+  overflow:hidden;
+  height:0;
+  padding:0;
+  padding-bottom: calc(100% * 3 / 4);
+  max-height:20vh;
   grid-area: image;
+  vertical-align: center;
+  horiz-align: center;
 }
 
 svg {
   background-size: contain;
+
 }
 
 #text {
@@ -85,11 +116,20 @@ svg {
   font-family: serif;
   color: white;
   background: black;
+  overflow-y:scroll;
+    max-height: 80vh;
 }
 
+.Tabs__Tab {
+    display:inline-block;
+    height: 100%;
+    width:25%;
+    font-size: calc(4vh + 4vw)
+}
 
 #audio {
   grid-area: audio;
+    height: auto;
 }
 
 #category-image {
@@ -103,4 +143,20 @@ svg {
 #category-audio {
   grid-area: category-audio;
 }
+.Category-Title{
+    width: 100%;
+    background: black;
+    color: white;
+    font-size: calc(3vh + 3vw);
+}
+.Category-Checkboxes{
+    text-align: left;
 
+}
+.Category-Checkbox{
+    font-size: calc(3vh+ 3vw);
+}
+#audio-player{
+    width: 100%;
+    vertical-align: center;
+}

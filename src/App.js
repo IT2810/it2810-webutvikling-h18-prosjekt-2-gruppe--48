@@ -18,21 +18,15 @@ class App extends Component {
     this.callback = this.callback.bind(this);
   }
   render() {
-    const content = {
-      tab1: 'Tab 1',
-      tab2: 'Tab 2',
-      tab3: 'Tab 3',
-      tab4: 'Tab 4'
-    };
     return (
       <div className="App">
         <div id="container">
           <div id="title">The amazing content site</div>
           <Tabs active={this.state.active} onChange={active => this.setState({ active })}>
-            <div id="tab1" className="tab" key="tab1">Tab component 1</div>
-            <div id="tab2" className="tab" key="tab2">Tab component 2</div>
-            <div id="tab3" className="tab" key="tab3">Tab component 3</div>
-            <div id="tab4" className="tab" key="tab4">Tab component 4</div>
+            <div id="true" className="tab" key="tab1">Tab 1</div>
+            <div className="tab" key="tab2">Tab 2</div>
+            <div className="tab" key="tab3">Tab 3</div>
+            <div className="tab" key="tab4">Tab 4</div>
           </Tabs>
           <div id="image"><SVGComponent /></div>
           <div id="text"><PoemComponent /></div>
@@ -164,8 +158,9 @@ class Tabs extends Component {
     return (
       <div className="Tabs">
         {React.Children.map(this.props.children, (child, i) => {
+          var isSelected = (currentIndex === i+1) ? "selected" : "unselected";
           return (
-            <div className="Tabs__Tab" onClick={() => {
+            <div id={isSelected} className="Tabs__Tab" onClick={() => {
               currentIndex = i + 1;
               getResource(updateMap["images"]);
               getResource(updateMap["text"]);
